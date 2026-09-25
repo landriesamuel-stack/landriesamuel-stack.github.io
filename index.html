@@ -1,434 +1,409 @@
-Here is a complete, production-ready design code for a highly engaging promotional website for [Treasure and Genius in Genesis: Meditations for 21st Century Disciples on Genesis 1–11](https://www.google.com/search?q=treasure+and+genius+in+genesis:+meditations+for+21st+century+disciples+on+genesis+1%E2%80%9311&kgmid=/g/11nq1n67mq) by Dr. Phillip Heath. [1] 
-The theme relies on an elegant, authoritative palette inspired by classic biblical themes and the book's title—featuring deep midnight blue (representing the cosmos/creation), antique gold accents (representing kingdom authority, genius, and treasure), and warm parchment backgrounds (representing ancient scriptures).
-## 🖥️ HTML & CSS Implementation (Single Page Architecture)
-You can save this code as an index.html file and open it directly in any browser.
+<style>
+    /* Direct font injection for online preview stability */
+    @import url('https://googleapis.com');
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure and Genius in Genesis | Dr. Phillip Heath</title>
-    <style>
-        /* --- BOOK-INSPIRED PALETTE ---
-           Primary / Backgrounds: Midnight Blue (#0a192f), Parchment (#fcf8f2)
-           Accents: Rich Gold (#d4af37), Radiant Amber (#dfb15b)
-           Text: Deep Charcoal (#222222), Off-White (#f4f6f9)
-        ---------------------------------- */
-        
-        :root {
-            --midnight: #0a192f;
-            --parchment: #fcf8f2;
-            --gold: #d4af37;
-            --gold-hover: #b49028;
-            --charcoal: #222222;
-            --card-bg: #ffffff;
-            --text-light: #f4f6f9;
+    /* Modern Design Tokens */
+    :root {
+        --midnight-dark: #060b13;
+        --midnight-card: #0d1527;
+        --midnight-light: #16223f;
+        --gold-primary: #dfb15b;
+        --gold-light: #f3d79a;
+        --text-main: #f4f6f9;
+        --text-muted: #a3b3cc;
+        --parchment: #fdfaf4;
+        --charcoal: #1a2130;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: var(--midnight-dark);
+        color: var(--text-main);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        line-height: 1.7;
+    }
+
+    h1, h2, h3, .logo {
+        font-family: 'Cinzel', serif;
+        letter-spacing: 1px;
+    }
+
+    .container {
+        width: 92%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 20px;
+    }
+
+    /* Fixed Navigation */
+    header {
+        background-color: rgba(6, 11, 19, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(223, 177, 91, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 92%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .logo {
+        color: var(--gold-primary);
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    nav a {
+        color: var(--text-main);
+        text-decoration: none;
+        margin-left: 24px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: var(--gold-primary);
+    }
+
+    /* Premium Hero Section */
+    .hero {
+        position: relative;
+        background: radial-gradient(circle at 80% 20%, var(--midnight-light) 0%, var(--midnight-dark) 100%);
+        overflow: hidden;
+        border-bottom: 1px solid rgba(223, 177, 91, 0.1);
+        padding: 60px 0;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(rgba(223, 177, 91, 0.05) 1px, transparent 0);
+        background-size: 24px 24px;
+        pointer-events: none;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        color: #ffffff;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+        color: var(--gold-primary);
+        display: block;
+        font-size: 3.2rem;
+        margin-top: 5px;
+    }
+
+    .tagline {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--text-muted);
+        margin-bottom: 25px;
+    }
+
+    .author-tag {
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--gold-light);
+        margin-bottom: 40px;
+    }
+
+    .cover-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .book-mockup {
+        width: 280px;
+        height: 430px;
+        background: linear-gradient(135deg, #091122 0%, #03060c 100%);
+        border: 1px solid rgba(223, 177, 91, 0.4);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        border-radius: 4px 12px 12px 4px;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .book-mockup::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 10px;
+        bottom: 0;
+        width: 4px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 1px 0 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .book-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4rem;
+        color: #ffffff;
+        font-weight: 700;
+        border-bottom: 1px solid var(--gold-primary);
+        padding-bottom: 15px;
+        width: 100%;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        background-color: var(--gold-primary);
+        color: var(--midnight-dark);
+        padding: 16px 36px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 10px 20px -5px rgba(223, 177, 91, 0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 15px 25px -5px rgba(223, 177, 91, 0.4);
+    }
+
+    .light-bg {
+        background-color: var(--parchment);
+        color: var(--charcoal);
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .light-bg .section-header h2 { color: var(--midnight-dark); }
+    .dark-bg .section-header h2 { color: #ffffff; }
+
+    .accent-line {
+        width: 60px;
+        height: 3px;
+        background-color: var(--gold-primary);
+        margin: 0 auto;
+    }
+
+    .synopsis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 50px;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .synopsis-text p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        color: #2c3545;
+    }
+
+    .spheres-card {
+        background-color: #ffffff;
+        border: 1px solid rgba(0,0,0,0.06);
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
+    }
+
+    .spheres-card h3 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: var(--midnight-dark);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    .spheres-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+
+    .spheres-list li {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        color: #4a5468;
+    }
+
+    .spheres-list li::before {
+        content: "✦";
+        color: var(--gold-primary);
+        margin-right: 12px;
+        font-size: 1.1rem;
+    }
+
+    .retail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+    }
+
+    .retail-card {
+        background-color: var(--midnight-card);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 8px;
+        padding: 35px 25px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .retail-card:hover {
+        border-color: rgba(223, 177, 91, 0.4);
+        transform: translateY(-4px);
+    }
+
+    .retail-card h3 {
+        color: #ffffff;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+
+    .retail-card .type {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--gold-primary);
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    .btn-secondary {
+        display: block;
+        border: 1px solid rgba(223, 177, 91, 0.4);
+        color: var(--text-main);
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--gold-primary);
+        color: var(--midnight-dark);
+        border-color: var(--gold-primary);
+    }
+
+    .author-layout {
+        max-width: 850px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .author-layout p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #4a5468;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        background-color: #03060c;
+        color: var(--text-muted);
+        text-align: center;
+        padding: 50px 20px;
+        border-top: 1px solid rgba(223, 177, 91, 0.1);
+        font-size: 0.9rem;
+    }
+
+    footer a {
+        color: var(--gold-primary);
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+        .hero-grid {
+            grid-template-columns: 1.2fr 0.8fr;
+            text-align: left;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Georgia', serif;
+        .hero-content {
+            text-align: left;
         }
-
-        body {
-            background-color: var(--parchment);
-            color: var(--charcoal);
-            line-height: 1.6;
-        }
-
-        /* Utility Components */
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .sans-serif {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        /* Header / Navigation */
-        header {
-            background-color: var(--midnight);
-            padding: 20px 0;
-            border-bottom: 3px solid var(--gold);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: var(--gold);
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--gold);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
-            color: var(--text-light);
-            padding: 80px 0;
-            text-align: center;
-            border-bottom: 5px solid var(--gold);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-
-        .hero .subtitle {
-            font-size: 1.4rem;
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #a8b2d1;
-        }
-
-        .hero .author {
-            font-size: 1.2rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-light);
-            margin-bottom: 40px;
-        }
-
-        .hero-layout {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-        }
-
-        /* Book Cover Mockup Placeholder */
-        .book-cover-placeholder {
-            width: 260px;
-            height: 400px;
-            background: linear-gradient(135deg, #0f2647 0%, #050d1a 100%);
-            border: 4px solid var(--gold);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            border-radius: 4px;
-        }
-
-        .book-cover-placeholder::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 12px;
-            background: rgba(255,255,255,0.08);
-            border-right: 1px solid rgba(0,0,0,0.2);
-        }
-
-        /* Main Purchase Call to Action Button */
-        .cta-button {
-            display: inline-block;
-            background-color: var(--gold);
-            color: var(--midnight);
-            padding: 15px 35px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(212,175,55,0.3);
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #f7cf4c;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212,175,55,0.5);
-        }
-
-        /* About & Synopsis Section */
-        .synopsis-section {
-            background-color: var(--parchment);
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: var(--midnight);
-            margin-bottom: 40px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--gold);
-        }
-
+        .hero h1 { font-size: 3.5rem; }
+        .hero h1 span { font-size: 4.2rem; }
         .synopsis-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
+            grid-template-columns: 1.1fr 0.9fr;
         }
+    }
+</style>
 
-        .synopsis-text p {
-            font-size: 1.15rem;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">DR. PHILLIP HEATH</a>
+        <nav>
+            <a href="#about">The Concept</a>
+            <a href="#purchase">Purchase</a>
+            <a href="#author">The Author</a>
+        </nav>
+    </div>
+</header>
 
-        /* Culture Spheres Checklist */
-        .spheres-box {
-            background-color: var(--card-bg);
-            border-left: 4px solid var(--gold);
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-radius: 0 8px 8px 0;
-        }
-
-        .spheres-box h3 {
-            color: var(--midnight);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .spheres-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            list-style: none;
-        }
-
-        .spheres-list li {
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .spheres-list li::before {
-            content: "✦";
-            color: var(--gold);
-            margin-right: 10px;
-            font-size: 1.1rem;
-        }
-
-        /* Retailers Grid Section */
-        .retail-section {
-            background-color: #f1eae0;
-            padding: 60px 0;
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .retail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .retail-card {
-            background-color: var(--card-bg);
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 6px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease;
-        }
-
-        .retail-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .retail-card h3 {
-            font-size: 1.4rem;
-            color: var(--midnight);
-            margin-bottom: 10px;
-        }
-
-        .retail-card .format {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: #777;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .retail-btn {
-            display: inline-block;
-            background-color: var(--midnight);
-            color: var(--text-light);
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .retail-btn:hover {
-            background-color: var(--gold);
-            color: var(--midnight);
-        }
-
-        /* About Author Section */
-        .author-section {
-            padding: 60px 0;
-            background-color: var(--parchment);
-        }
-
-        .author-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .author-text p {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--midnight);
-            color: #a8b2d1;
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 0.9rem;
-            border-top: 3px solid var(--gold);
-        }
-
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        /* Responsive Layouts */
-        @media(min-width: 768px) {
-            .hero-layout {
-                flex-direction: row;
-                justify-content: center;
-                text-align: left;
-                gap: 60px;
-            }
-            .hero {
-                text-align: left;
-            }
-            .hero h1 { font-size: 3.5rem; }
-            .synopsis-grid {
-                grid-template-columns: 3fr 2fr;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header Navigation -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">PHILLIP HEATH</a>
-            <nav class="sans-serif">
-                <a href="#about">The Book</a>
-
-Where to Buy
-The Author
-
-
-Meditations for 21st Century Disciples
-TREASURE & GENIUS IN GENESIS
-Chapters 1-11
-DR. PHIL HEATH
-Treasure and Genius
-in Genesis
-Meditations for 21st Century Disciples on Genesis 1-11
-By Dr. Phillip Heath
-Get Your Copy Today
-
-
-Reclaim Your Identity & Authority
-
-
-The book addresses spiritual forces aiming to compromise personal identity and authority. It explores Genesis as the foundation of human brokenness and restoration, urging readers to embrace their identity as God's image-bearers.
-
-
-Influencing Culture
-Encourages impact across spheres including government, media, arts, business, education, church, and family.
-
-
-
-[1] 
-Available Platforms & Formats
-Purchase links and details can be found across major distributors like Amazon, Five Arrows Media, Audible, and Google Play.
-
-[1, 2] 
-About Dr. Phillip Heath
-
-
-Dr. Heath transitioned from a background in mathematics to inner healing ministry following personal transformation. He applies gospel principles and practical wisdom to guide contemporary believers through trials.
-
-
-
-[3, 4] 
-© 2026 Dr. Phillip Heath. All Rights Reserved.
-Published by Five Arrows Media.
-
-[2] 
-
-
-<FollowUp>
-Would you like help with modifying the design or adding more interactive components?
-</FollowUp>
-
-
-[1] [https://www.amazon.ca](https://www.amazon.ca/Treasure-Genius-Genesis-Meditations-Disciples/dp/1998412296)
-[2] [https://www.audiobooksnow.com](https://www.audiobooksnow.com/audiobook/treasure-and-genius-in-genesis/10468869/)
-[3] [https://www.amazon.ca](https://www.amazon.ca/Treasure-Genius-Genesis-Meditations-Disciples/dp/1998412296)
-[4] [https://www.fivearrowsmedia.com](https://www.fivearrowsmedia.com/bookshelf/heath%2C-dr.-phil/treasure-and-genius-in-genesis)
+<main>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="author-tag">Now Available Globally</div>
+                <h1>Treasure &amp; Genius <span>in Genesis</span></h1>
+                <p class="tagline">Meditations for 21st Century Disciples on Genesis 1–11</p>
