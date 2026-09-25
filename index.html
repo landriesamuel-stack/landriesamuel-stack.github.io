@@ -1,356 +1,409 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure and Genius in Genesis | Dr. Phillip Heath</title>
-    <!-- Premium Google Fonts -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Modern Design Tokens */
-        :root {
-            --midnight-dark: #060b13;
-            --midnight-card: #0d1527;
-            --midnight-light: #16223f;
-            --gold-primary: #dfb15b;
-            --gold-light: #f3d79a;
-            --text-main: #f4f6f9;
-            --text-muted: #a3b3cc;
-            --parchment: #fdfaf4;
-            --charcoal: #1a2130;
-        }
+<style>
+    /* Direct font injection for online preview stability */
+    @import url('https://googleapis.com');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* Modern Design Tokens */
+    :root {
+        --midnight-dark: #060b13;
+        --midnight-card: #0d1527;
+        --midnight-light: #16223f;
+        --gold-primary: #dfb15b;
+        --gold-light: #f3d79a;
+        --text-main: #f4f6f9;
+        --text-muted: #a3b3cc;
+        --parchment: #fdfaf4;
+        --charcoal: #1a2130;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            background-color: var(--midnight-dark);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.7;
-        }
+    body {
+        background-color: var(--midnight-dark);
+        color: var(--text-main);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        line-height: 1.7;
+    }
 
-        h1, h2, h3, .logo {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-        }
+    h1, h2, h3, .logo {
+        font-family: 'Cinzel', serif;
+        letter-spacing: 1px;
+    }
 
-        .container {
-            width: 92%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
+    .container {
+        width: 92%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 20px;
+    }
 
-        /* Fixed Navigation */
-        header {
-            background-color: rgba(6, 11, 19, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(223, 177, 91, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    /* Fixed Navigation */
+    header {
+        background-color: rgba(6, 11, 19, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(223, 177, 91, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 92%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 92%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 
-        .logo {
-            color: var(--gold-primary);
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
+    .logo {
+        color: var(--gold-primary);
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-decoration: none;
+    }
 
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin-left: 24px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+    nav a {
+        color: var(--text-main);
+        text-decoration: none;
+        margin-left: 24px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
 
-        nav a:hover {
-            color: var(--gold-primary);
-        }
+    nav a:hover {
+        color: var(--gold-primary);
+    }
 
-        /* Premium Hero Section */
-        .hero {
-            position: relative;
-            background: radial-gradient(circle at 80% 20%, var(--midnight-light) 0%, var(--midnight-dark) 100%);
-            overflow: hidden;
-            border-bottom: 1px solid rgba(223, 177, 91, 0.1);
-            padding: 60px 0;
-        }
+    /* Premium Hero Section */
+    .hero {
+        position: relative;
+        background: radial-gradient(circle at 80% 20%, var(--midnight-light) 0%, var(--midnight-dark) 100%);
+        overflow: hidden;
+        border-bottom: 1px solid rgba(223, 177, 91, 0.1);
+        padding: 60px 0;
+    }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(rgba(223, 177, 91, 0.05) 1px, transparent 0);
-            background-size: 24px 24px;
-            pointer-events: none;
-        }
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(rgba(223, 177, 91, 0.05) 1px, transparent 0);
+        background-size: 24px 24px;
+        pointer-events: none;
+    }
 
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        color: #ffffff;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+        color: var(--gold-primary);
+        display: block;
+        font-size: 3.2rem;
+        margin-top: 5px;
+    }
+
+    .tagline {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--text-muted);
+        margin-bottom: 25px;
+    }
+
+    .author-tag {
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--gold-light);
+        margin-bottom: 40px;
+    }
+
+    .cover-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .book-mockup {
+        width: 280px;
+        height: 430px;
+        background: linear-gradient(135deg, #091122 0%, #03060c 100%);
+        border: 1px solid rgba(223, 177, 91, 0.4);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        border-radius: 4px 12px 12px 4px;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .book-mockup::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 10px;
+        bottom: 0;
+        width: 4px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 1px 0 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .book-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4rem;
+        color: #ffffff;
+        font-weight: 700;
+        border-bottom: 1px solid var(--gold-primary);
+        padding-bottom: 15px;
+        width: 100%;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        background-color: var(--gold-primary);
+        color: var(--midnight-dark);
+        padding: 16px 36px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 10px 20px -5px rgba(223, 177, 91, 0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 15px 25px -5px rgba(223, 177, 91, 0.4);
+    }
+
+    .light-bg {
+        background-color: var(--parchment);
+        color: var(--charcoal);
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .light-bg .section-header h2 { color: var(--midnight-dark); }
+    .dark-bg .section-header h2 { color: #ffffff; }
+
+    .accent-line {
+        width: 60px;
+        height: 3px;
+        background-color: var(--gold-primary);
+        margin: 0 auto;
+    }
+
+    .synopsis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 50px;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .synopsis-text p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        color: #2c3545;
+    }
+
+    .spheres-card {
+        background-color: #ffffff;
+        border: 1px solid rgba(0,0,0,0.06);
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
+    }
+
+    .spheres-card h3 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: var(--midnight-dark);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    .spheres-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+
+    .spheres-list li {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        color: #4a5468;
+    }
+
+    .spheres-list li::before {
+        content: "✦";
+        color: var(--gold-primary);
+        margin-right: 12px;
+        font-size: 1.1rem;
+    }
+
+    .retail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+    }
+
+    .retail-card {
+        background-color: var(--midnight-card);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 8px;
+        padding: 35px 25px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .retail-card:hover {
+        border-color: rgba(223, 177, 91, 0.4);
+        transform: translateY(-4px);
+    }
+
+    .retail-card h3 {
+        color: #ffffff;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+
+    .retail-card .type {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--gold-primary);
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    .btn-secondary {
+        display: block;
+        border: 1px solid rgba(223, 177, 91, 0.4);
+        color: var(--text-main);
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--gold-primary);
+        color: var(--midnight-dark);
+        border-color: var(--gold-primary);
+    }
+
+    .author-layout {
+        max-width: 850px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .author-layout p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #4a5468;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        background-color: #03060c;
+        color: var(--text-muted);
+        text-align: center;
+        padding: 50px 20px;
+        border-top: 1px solid rgba(223, 177, 91, 0.1);
+        font-size: 0.9rem;
+    }
+
+    footer a {
+        color: var(--gold-primary);
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
         .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: 1.2fr 0.8fr;
+            text-align: left;
         }
-
         .hero-content {
-            text-align: center;
+            text-align: left;
         }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            color: #ffffff;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: var(--gold-primary);
-            display: block;
-            font-size: 3.2rem;
-            margin-top: 5px;
-        }
-
-        .tagline {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .author-tag {
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold-light);
-            margin-bottom: 40px;
-        }
-
-        /* Graphic Book Placeholder styling */
-        .cover-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-
-        .book-mockup {
-            width: 280px;
-            height: 430px;
-            background: linear-gradient(135deg, #091122 0%, #03060c 100%);
-            border: 1px solid rgba(223, 177, 91, 0.4);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            border-radius: 4px 12px 12px 4px;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .book-mockup::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10px;
-            bottom: 0;
-            width: 4px;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 1px 0 0 rgba(0, 0, 0, 0.4);
-        }
-
-        .book-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: #ffffff;
-            font-weight: 700;
-            border-bottom: 1px solid var(--gold-primary);
-            padding-bottom: 15px;
-            width: 100%;
-        }
-
-        /* Premium Buttons */
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--gold-primary);
-            color: var(--midnight-dark);
-            padding: 16px 36px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 20px -5px rgba(223, 177, 91, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px -5px rgba(223, 177, 91, 0.4);
-        }
-
-        /* Light Section for Content Stability */
-        .light-bg {
-            background-color: var(--parchment);
-            color: var(--charcoal);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        .light-bg .section-header h2 { color: var(--midnight-dark); }
-        .dark-bg .section-header h2 { color: #ffffff; }
-
-        .accent-line {
-            width: 60px;
-            height: 3px;
-            background-color: var(--gold-primary);
-            margin: 0 auto;
-        }
-
-        /* Synopsis Layout */
+        .hero h1 { font-size: 3.5rem; }
+        .hero h1 span { font-size: 4.2rem; }
         .synopsis-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 50px;
-            font-family: 'Playfair Display', serif;
+            grid-template-columns: 1.1fr 0.9fr;
         }
+    }
+</style>
 
-        .synopsis-text p {
-            font-size: 1.25rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            color: #2c3545;
-        }
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">DR. PHILLIP HEATH</a>
+        <nav>
+            <a href="#about">The Concept</a>
+            <a href="#purchase">Purchase</a>
+            <a href="#author">The Author</a>
+        </nav>
+    </div>
+</header>
 
-        .spheres-card {
-            background-color: #ffffff;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
-        }
-
-        .spheres-card h3 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--midnight-dark);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .spheres-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
-
-        .spheres-list li {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            color: #4a5468;
-        }
-
-        .spheres-list li::before {
-            content: "✦";
-            color: var(--gold-primary);
-            margin-right: 12px;
-            font-size: 1.1rem;
-        }
-
-        /* Modernized Retail Grid */
-        .retail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .retail-card {
-            background-color: var(--midnight-card);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 35px 25px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .retail-card:hover {
-            border-color: rgba(223, 177, 91, 0.4);
-            transform: translateY(-4px);
-        }
-
-        .retail-card h3 {
-            color: #ffffff;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .retail-card .type {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gold-primary);
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-
-        .btn-secondary {
-            display: block;
-            border: 1px solid rgba(223, 177, 91, 0.4);
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
+<main>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="author-tag">Now Available Globally</div>
+                <h1>Treasure &amp; Genius <span>in Genesis</span></h1>
+                <p class="tagline">Meditations for 21st Century Disciples on Genesis 1–11</p>
